@@ -78,4 +78,3 @@ For Gemini, there is also a "Send the FULL video" toggle that uploads via the Fi
 
 - API keys are kept in Streamlit `session_state` only; they are not written to disk. You can also pre-set `ANTHROPIC_API_KEY`, `OPENAI_API_KEY`, or `GOOGLE_API_KEY` in the environment.
 - Streamlit's upload limit is bumped to 2 GB via [`.streamlit/config.toml`](.streamlit/config.toml).
-- Sample surgical clips are not committed (license / size). Get them from the project owner.
