@@ -1,0 +1,6 @@
+streamlit>=1.30
+opencv-python>=4.8
+# Pick whichever provider(s) you plan to use:
+anthropic>=0.40
+openai>=1.40
+google-generativeai>=0.7

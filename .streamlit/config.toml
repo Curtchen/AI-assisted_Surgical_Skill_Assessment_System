@@ -1,0 +1,4 @@
+[server]
+# 2 GB upload + WebSocket message size, matching Gemini's video-file ceiling.
+maxUploadSize = 2048
+maxMessageSize = 2048
