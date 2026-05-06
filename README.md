@@ -12,6 +12,28 @@ A Streamlit-based agent that takes a laparoscopic / endoscopic surgery clip and 
 
 Every run is saved as a JSON record under `app/runs/` and indexed in `app/history/`.
 
+## System Overview
+
+### 1. Main UI — three steps in one page
+Sidebar (left) holds the **provider / API key / model** picker and the **number of frame-to-send** input. The main panel walks through three steps: upload a video, confirm the **surgery type** and edit the expected **instruments / organs** vocabulary (one per line, freely editable), then click **Analyze video**. The bottom **Show analysis for** selector and **Run history** expander let you replay any past run in place.
+
+![Main UI](docs/screenshots/01-ui-overview.png)
+
+### 2. Historical analysis — full recap of a past run
+Selecting a past run from the dropdown re-renders the whole result in place: identified **surgery type** with Step-1 reasoning, the four-column **summary** (dominant phase, phases observed, instruments observed, organs affected, anatomy visible), the **narrative paragraph**, and the full **per-frame predictions table** with phase / instruments / organs reasoning columns. This is the place to inspect what the model actually saw and why it called each frame the way it did.
+
+![Historical analysis view](docs/screenshots/02-history-view.png)
+
+### 3. Phase timeline
+After analysis the per-frame phase labels are aggregated into a **Gantt-style timeline** showing when each surgical phase begins and ends within the clip. Below the chart is a table of phase segments (`start_sec`, `end_sec`, `phase`, `description`) so you can read off the boundaries exactly.
+
+![Phase timeline](docs/screenshots/03-phase-timeline.png)
+
+### 4. Instrument events + error / quality analysis
+Two analytical layers on top of the per-frame predictions: **Instrument enter / exit events** (each row marks a tool entering or leaving the field, with the active phase) gives a temporal trace of tool usage; **Error / quality analysis** is the model's structured note on suboptimal moments: a `summary` plus a table of incidents with `severity`, `category`, and a 2-3 sentence description of what happened vs what should have happened.
+
+![Instrument events and error analysis](docs/screenshots/04-events-and-errors.png)
+
 ## Quick start
 
 ```bash
